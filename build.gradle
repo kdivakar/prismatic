@@ -6,12 +6,7 @@ plugins {
 
 group = 'com.dkothandan'
 version = '0.0.1-SNAPSHOT'
-
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
-    }
-}
+sourceCompatibility = '17'
 
 repositories {
     mavenCentral()
@@ -31,7 +26,7 @@ dependencies {
     implementation group: 'com.sendgrid', name: 'sendgrid-java', version: '4.0.1'
 }
 
-test {
+tasks.named('test') {
     useJUnitPlatform()
 }
 
