@@ -33,6 +33,12 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
+tasks {
+    bootJar {
+        archiveFileName.set("app.jar")
+    }
+}
+
 for(Map.Entry p: project.getProperties()) {
     println p
 }
