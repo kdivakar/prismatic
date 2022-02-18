@@ -1,4 +1,5 @@
 plugins {
+    id "com.microsoft.azure.azurewebapp" version "1.2.0"
     id 'org.springframework.boot' version '2.5.9'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
@@ -33,5 +34,5 @@ tasks.named('test') {
 }
 
 for(Map.Entry p: project.getProperties()) {
-    println p;
+    println p
 }
