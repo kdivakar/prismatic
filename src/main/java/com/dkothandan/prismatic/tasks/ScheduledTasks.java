@@ -1,5 +1,6 @@
 package com.dkothandan.prismatic.tasks;
 
+import com.dkothandan.prismatic.utils.PrismaticConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,14 +13,18 @@ import java.util.Date;
 @Component
 public class ScheduledTasks {
 
+    private PrismaticConfig prismaticConfig;
+
     private static final Logger log = LoggerFactory.getLogger(ScheduledTasks.class);
 
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 
     private final CampGroundReservationAvailabilityTask campGroundReservationAvailabilityTask;
 
-    public ScheduledTasks(CampGroundReservationAvailabilityTask campGroundReservationAvailabilityTask) {
+    public ScheduledTasks(CampGroundReservationAvailabilityTask campGroundReservationAvailabilityTask, PrismaticConfig prismaticConfig) {
         this.campGroundReservationAvailabilityTask = campGroundReservationAvailabilityTask;
+        this.prismaticConfig = prismaticConfig;
+        System.out.println(prismaticConfig.getSendGridAPIKey());
     }
 
 //    @Scheduled(fixedRate = (1000 * 60 * 30)) // 30 mins

@@ -1,6 +1,7 @@
 package com.dkothandan.prismatic.utils;
 
 import com.sendgrid.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -9,8 +10,8 @@ import java.io.IOException;
 @Component
 public class EmailHelper {
 
-    @Value("${SENDGRID_API_KEY}")
-    private String sendGridAPIKey;
+    @Autowired
+    private PrismaticConfig prismaticConfig;
 
     public void sendEmail(String emailFrom, String emailTo, String subject, String message) {
         Email from = new Email(emailFrom);
@@ -18,7 +19,7 @@ public class EmailHelper {
         Content content = new Content("text/plain", message);
         Mail mail = new Mail(from, subject, to, content);
 
-        SendGrid sg = new SendGrid(sendGridAPIKey);
+        SendGrid sg = new SendGrid(prismaticConfig.getSendGridAPIKey());
         Request request = new Request();
         try {
             request.setMethod(Method.POST);
